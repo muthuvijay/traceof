@@ -1,0 +1,3 @@
+rootProject.name = 'traceof'
+
+include ':app'

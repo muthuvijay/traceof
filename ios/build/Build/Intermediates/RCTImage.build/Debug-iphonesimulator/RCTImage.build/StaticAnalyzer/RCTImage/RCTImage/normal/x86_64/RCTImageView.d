@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/vijay/official/apps/traceof/node_modules/react-native/Libraries/Image/RCTImageView.m \
+  /Users/vijay/official/apps/traceof/node_modules/react-native/Libraries/Image/RCTImageView.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTResizeMode.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTImageSource.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/vijay/official/apps/traceof/node_modules/react-native/Libraries/Image/RCTImageBlurUtils.h \
+  /Users/vijay/official/apps/traceof/node_modules/react-native/Libraries/Image/RCTImageLoader.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTURLRequestHandler.h \
+  /Users/vijay/official/apps/traceof/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTURLRequestDelegate.h \
+  /Users/vijay/official/apps/traceof/node_modules/react-native/Libraries/Image/RCTImageUtils.h
