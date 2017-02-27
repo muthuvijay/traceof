@@ -2,7 +2,10 @@
 const API = require('./ApiUrls');
 const Utils = require('./utils');
 
-const saveAPI = API.URLS.POST.STORE_LOCATION_INFO.toString();
+const saveAPI           = API.URLS.POST.STORE_LOCATION_INFO.toString();
+const registerAPI       = API.URLS.POST.REGISTER_USER.toString();
+const loginAPI          = API.URLS.POST.LOGIN_USER.toString();
+
 const Schema = {};
 
 Schema[saveAPI] = {
@@ -17,6 +20,25 @@ Schema[saveAPI] = {
         status  : "string"
     }
 }
+
+
+//register API
+Schema[registerAPI] = {
+    payload: {
+        userEmail   : "string",
+        userName    : "string",
+        userPass    : "string"
+    }
+}
+
+//Login API
+Schema[loginAPI] = {
+    payload: {
+        userName    : "string",
+        userPass    : "string"
+    }
+}
+
 
 Schema.check = (contract, payload) => {
     let _promise = (resolve, reject) => {

@@ -43,3 +43,4 @@ Router.setDatabase(DB);
 })*/
 
 Router.set(API.URLS.POST.STORE_LOCATION_INFO, config.Method.POST, config.DBMode.INSERT, config.Collection.LOCATION);
+Router.set(API.URLS.POST.REGISTER_USER, config.Method.POST, config.DBMode.INSERT, config.Collection.USER);

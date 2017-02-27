@@ -1,4 +1,5 @@
 //URL router whic routes the API request to the respective files
+const Config = require('./config');
 const Schema = require('./schema');
 
 let Router = new (class {
@@ -25,7 +26,7 @@ let Router = new (class {
         return this.db;
     }
 
-    set(url,method,dbmode, collection){
+    set(url, method, dbmode, collection){
         console.log("Set route to url "+url);
         if(url && this.accept.has(method)){
             this.app[method](url,(req, res) => {
@@ -43,12 +44,16 @@ let Router = new (class {
 
     callback(req, resp, dbmode, collection){
         
-        this.db[dbmode](collection, req.body).then((result) => {
-           /* resp.send(Object.assign(result.ops,{
-                'status' : 'success'
-            }));*/
-            resp.send({"count" : result.insertedCount, "insertedIds": result.insertedIds, 'status' : 'success'});
-        });
+        switch(dbmode){
+        
+            default:
+            case Config.DBMode.INSERT:
+                this.db[dbmode](collection, req.body).then((result) => {
+                    resp.send({"count" : result.insertedCount, "insertedIds": result.insertedIds, 'status' : 'success'});
+                });
+                break;  
+
+        }
         
     }
 })();
