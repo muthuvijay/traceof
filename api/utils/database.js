@@ -5,7 +5,7 @@ let config = require('./config');
 class Database {
     
     constructor(){
-        // this.conn = null;
+        this.conn = null;
         // this.connectDB();
     }
 
@@ -17,7 +17,7 @@ class Database {
                     console.log("MongoDb Error: "+ err);
                     return reject(err);
                 }
-
+                this.conn = db;
                 return resolve(db);
             });
         });
@@ -29,6 +29,25 @@ class Database {
             // return this.conn;
         });
     }*/
+
+    static insert(collection,payload){
+        // console.log(this.conn);
+        return new Promise((resolve, reject) => {
+            this.conn.collection(collection).insert(payload, (err, result) => {
+                if(err) {
+                    console.log(err);
+                    return reject(err);
+                }
+
+                console.log('Inserted '+JSON.stringify(payload)+' to '+collection+' database');
+
+                return resolve(result);
+            },
+            (err) => {
+                return reject(err);
+            });
+        });
+    }
 }
 
 module.exports = Database;

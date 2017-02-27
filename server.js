@@ -5,6 +5,7 @@ const app = express();
 const config = require('./api/utils/config');
 const DB = require('./api/utils/database');
 const API = require('./api/utils/ApiUrls');
+const Router = require('./api/utils/router');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -22,10 +23,12 @@ app.listen(config.PORT,()=>{
 
 });
 
+Router.setApp(app);
+Router.setDatabase(DB);
 
 //save location info
 
-app.post(API.URLS.POST.STORE_LOCATION_INFO, (req, resp) => {
+/*app.post(API.URLS.POST.STORE_LOCATION_INFO, (req, resp) => {
     console.log(req.body);
     dbConn.collection('location').save(req.body, (err, result) => {
         if(err) {
@@ -37,4 +40,6 @@ app.post(API.URLS.POST.STORE_LOCATION_INFO, (req, resp) => {
             'status' : 'success'
         });
     })
-})
+})*/
+
+Router.set(API.URLS.POST.STORE_LOCATION_INFO, config.Method.POST, config.DBMode.INSERT, config.Collection.LOCATION);
