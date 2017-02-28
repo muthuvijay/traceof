@@ -48,6 +48,18 @@ class Database {
             });
         });
     }
+
+    static queryOne(collection, dataToFind){
+        return new Promise((resolve, reject) => {
+            this.conn.collection(collection).findOne(dataToFind).then((data) => {
+                resolve(data && data._id ? data._id : null);
+            },
+            (err) => {
+                reject(err);
+            });
+            
+        });
+    }
 }
 
 module.exports = Database;

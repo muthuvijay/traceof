@@ -8,6 +8,11 @@ let Router = new (class {
         this.app = null,
         this.accept = new Set(["post","get","delete","put"]);
         this.db = null;
+        this.options = {
+            method : Config.Method.POST,
+            dbmode  : Config.DBMode.INSERT,
+            controller : false
+        }
     }
 
     setApp(app){
@@ -26,20 +31,38 @@ let Router = new (class {
         return this.db;
     }
 
-    set(url, method, dbmode, collection){
+    set(url, collection, options){
         console.log("Set route to url "+url);
-        if(url && this.accept.has(method)){
-            this.app[method](url,(req, res) => {
-                //check if the request body is as per our API schema
-                Schema.check(Schema[url].payload, req.body).then((result)=>{
-                    this.callback.call(this, req, res, dbmode, collection);
-                },
-                (err) => {
-                    console.error(err);
-                });
+        let opt = options || {};
+        
+        opt = Object.assign({}, this.options, opt);
+        if(url && this.accept.has(opt.method)){
+            this.app[opt.method](url,(req, res) => {
+
+                if(opt.controller !== false && typeof opt.controller === 'object'){
+                    opt.controller.exec(req.body).then((data) => {
+                        //update model
+                        req.body = data;
+                        this.invoke(url, req, res, opt, collection);
+                    },(e) => {
+                        this.handleError(res, e);
+                    });
+                }else{
+                    this.invoke(url, req, res, opt, collection);
+                }
                 
             });
         }
+    }
+
+    invoke(url, req, res, opt, collection){
+        //check if the request body is as per our API schema
+        Schema.check(Schema[url].payload, req.body).then((result)=>{
+            this.callback.call(this, req, res, opt.dbmode, collection);
+        },
+        (err) => {
+            console.error(err);
+        });
     }
 
     callback(req, resp, dbmode, collection){
@@ -55,6 +78,10 @@ let Router = new (class {
 
         }
         
+    }
+
+    handleError(resp, errorMessage){
+        resp.send({'status' : 'error', 'message' : errorMessage})
     }
 })();
 
