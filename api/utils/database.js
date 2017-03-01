@@ -52,11 +52,23 @@ class Database {
     static queryOne(collection, dataToFind){
         return new Promise((resolve, reject) => {
             this.conn.collection(collection).findOne(dataToFind).then((data) => {
-                resolve(data && data._id ? data._id : null);
+                resolve(data && data._id ? data : null);
             },
             (err) => {
                 reject(err);
             });
+            
+        });
+    }
+
+    static query(collection, dataToFind=null){
+        return new Promise((resolve, reject) => {
+            let cursor = this.conn.collection(collection).find(dataToFind);
+            let data = [];
+            cursor.each((err, rec) =>{
+                data.push(rec);
+            })
+            resolve(data);
             
         });
     }

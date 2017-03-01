@@ -10,7 +10,8 @@ module.exports = {
     DBMode : {
         INSERT : 'insert',
         UPDATE : 'update',
-        SAVE    : 'save'
+        SAVE    : 'save',
+        QUERY   : 'query' 
     },
     Method : {
         POST    : 'post',

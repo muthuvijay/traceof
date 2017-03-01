@@ -34,7 +34,7 @@ Schema[registerAPI] = {
 //Login API
 Schema[loginAPI] = {
     payload: {
-        userName    : "string",
+        userEmail   : "string",
         userPass    : "string"
     }
 }

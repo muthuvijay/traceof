@@ -1,24 +1,20 @@
-//Register controller
+//Login controller
 const Router = require('../utils/router');
 const Config = require('../utils/config');
 const BaseController = require('./baseController');
 
-class RegisterController extends BaseController{
+class LoginController extends BaseController{
     constructor(props){
         super(props);
         this.db = Router.getDatabase();
     }
 
-    createPassword(){
-        return Math.ceil(Math.random() * 10000).toString();
-    }
-
     isValidUser(){
         if(this.db){
             return new Promise((resolve, reject) => {
-                this.db.queryOne(Config.Collection.USER, {userEmail:this.props.userEmail}).then((data) => {
+                this.db.queryOne(Config.Collection.USER, {userEmail:this.props.userEmail, userPass:this.props.userPass}).then((data) => {
                     if(data){
-                        resolve(true);
+                        resolve(data);
                     }else{
                         resolve(false);
                     }
@@ -34,14 +30,13 @@ class RegisterController extends BaseController{
         let _p = (resolve,reject) => {
             this.props = props;
             let obj = {
-                proceed : true
+                proceed : false //I have the values required, dont proceed
             }
             this.isValidUser().then((value) => {
-                if(value === true){
-                    reject('User already exists!');
+                if(value === false){
+                    reject("User not found!");
                 }else{
-                    this.props.userPass = this.createPassword();
-                    obj.data = this.props;
+                    obj.data = value;
                     resolve(obj);
                 }
                 
@@ -52,4 +47,4 @@ class RegisterController extends BaseController{
     }
 }
 
-module.exports = new RegisterController;
+module.exports = new LoginController;

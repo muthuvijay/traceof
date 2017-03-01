@@ -6,5 +6,9 @@ class BaseController{
         this.props = props;
     }
 
-    exec(){}
+    exec(){
+        throw "Implement this in the controller"
+    }
 }
+
+module.exports =  BaseController;

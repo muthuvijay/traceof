@@ -40,10 +40,19 @@ let Router = new (class {
             this.app[opt.method](url,(req, res) => {
 
                 if(opt.controller !== false && typeof opt.controller === 'object'){
-                    opt.controller.exec(req.body).then((data) => {
-                        //update model
-                        req.body = data;
-                        this.invoke(url, req, res, opt, collection);
+                    opt.controller.exec(req.body).then((obj) => {
+
+                        //Few controllers has DB queries inbuild which doesn't require to proceed with another DB operation,
+                        //in those cases, just send the values as is to the client
+
+                        if(obj.proceed){
+                            //update model
+                            req.body = obj.data || null;
+                            this.invoke(url, req, res, opt, collection);
+                        }else{
+                            this.handleResponse(res, obj.data);
+                        }
+                        
                     },(e) => {
                         this.handleError(res, e);
                     });
@@ -75,13 +84,23 @@ let Router = new (class {
                     resp.send({"count" : result.insertedCount, "insertedIds": result.insertedIds, 'status' : 'success'});
                 });
                 break;  
+            
+            case Config.DBMode.QUERY:
+                this.db[dbmode](collection, req.body).then((result) => {
+                    resp.send({"result" : result, 'status' : 'success'});
+                });
+                break;  
 
         }
         
     }
 
     handleError(resp, errorMessage){
-        resp.send({'status' : 'error', 'message' : errorMessage})
+        resp.send({'status' : 'error', 'message' : errorMessage});
+    }
+
+    handleResponse(resp, result){
+        resp.send({'status' : 'success', 'result' : result});
     }
 })();
 

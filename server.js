@@ -43,6 +43,8 @@ Router.setDatabase(DB);
 })*/
 
 const RegisterController = require('./api/controllers/registerController');
+const LoginController = require('./api/controllers/loginController');
 
 Router.set(API.URLS.POST.STORE_LOCATION_INFO, config.Collection.LOCATION);
 Router.set(API.URLS.POST.REGISTER_USER, config.Collection.USER, {controller: RegisterController});
+Router.set(API.URLS.POST.LOGIN_USER, config.Collection.USER, {controller: LoginController});
