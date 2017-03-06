@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let dbConn = null;
+const dbConn = null;
 //Create a Node server and listen to a port
 app.listen(config.PORT,()=>{
     console.log("server started");

@@ -13,12 +13,14 @@ import {
 } from 'react-native';
 
 import MapTracker from './src/map';
+import Registration from './src/register';
+import Login from './src/login';
 
 export default class traceof extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <MapTracker />
+        <Login />
       </View>
     );
   }

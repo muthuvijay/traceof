@@ -1,6 +1,7 @@
+"use strict";
 //MongoDb connection setup
-let MongoClient = require('mongodb').MongoClient;
-let config = require('./config');
+const MongoClient = require('mongodb').MongoClient;
+const config = require('./config');
 
 class Database {
     
@@ -61,7 +62,7 @@ class Database {
         });
     }
 
-    static query(collection, dataToFind=null){
+    static query(collection, dataToFind){
         return new Promise((resolve, reject) => {
             let cursor = this.conn.collection(collection).find(dataToFind);
             let data = [];

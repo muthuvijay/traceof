@@ -1,5 +1,5 @@
 //Keep API urls
-
+"use strict";
 
 module.exports = {
 

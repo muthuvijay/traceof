@@ -1,5 +1,5 @@
 //Base Controller
-
+"use strict";
 class BaseController{
 
     constructor(props){

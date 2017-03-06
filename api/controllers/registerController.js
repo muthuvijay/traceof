@@ -1,4 +1,5 @@
 //Register controller
+"use strict";
 const Router = require('../utils/router');
 const Config = require('../utils/config');
 const BaseController = require('./baseController');

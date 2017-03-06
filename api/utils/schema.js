@@ -1,4 +1,5 @@
 //Maintain database schema for mongoDb
+"use strict";
 const API = require('./ApiUrls');
 const Utils = require('./utils');
 

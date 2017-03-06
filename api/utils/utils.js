@@ -1,5 +1,5 @@
 //utils
-
+"use strict";
 const utils = {
 
     isString : (str) => { return typeof str === 'string'},

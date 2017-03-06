@@ -1,4 +1,5 @@
 //URL router whic routes the API request to the respective files
+"use strict";
 const Config = require('./config');
 const Schema = require('./schema');
 
